@@ -1,0 +1,30 @@
+{
+    "description": "MovingFul Auth.",
+    "goal": {
+        "type": "Submit",
+        "fields": {},
+        "submitAction": "action"
+    },
+    "pages": {
+        "Splash": {
+            "template": "splash",
+            "path": "splash",
+            "initial": true,
+            "templateProps": {
+                "title": "Video Page",
+                "fields": [
+                    {
+                        "id": "phone",
+                        "label": "Cell Phone Number",
+                        "data-Field": "phone",
+                        "validators": {
+                            "minLength": 2
+                        },
+                        "error": false
+                    }
+                ],
+                "nextScreen": "introslider"
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+  "description": "MovingFul Auth.",
+  "goal": {
+    "type": "Submit",
+    "fields": {},
+    "submitAction": "action"
+  },
+  "pages": {
+    "GetStarted": {
+      "template": "GetStarted",
+      "path": "getStarted",
+      "initial": true,
+      "templateProps": {
+        "button":"GET STARTED",
+        "nextScreen": "login"
+      }
+    },
+    "Login": {
+      "template": "login",
+      "path": "login",
+      "initial": true,
+      "templateProps": {
+        "title": "Welcome!!",
+        "fields": [
+          {
+            "id": "phone",
+            "label": "Phone Number",
+            "dataField": "phone",
+            "minLength": 2,
+            "maxLength": 14,
+            "error": "User doesn't exist"
+          }
+        ],
+        "nextScreen": "otpverify"
+      }
+    },
+    "OtpVerify": {
+      "path": "otpverify",
+      "template": "otpverify",
+      "templateProps": {
+        "title": "Please Confirm Your Number",
+        "content": "Enter your 6 digit verification code from the text message we just sent.",
+        "script": "Page 2 title",
+        "footerText": "Resend verification?",
+        "button": "CONFIRM",
+        "nextScreen": "upload-logo"
+      }
+    }
+
+  }
+}

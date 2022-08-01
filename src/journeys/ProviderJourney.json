@@ -1,0 +1,904 @@
+{
+  "description": "MovingFul Auth.",
+  "goal": {
+    "type": "Submit",
+    "fields": {},
+    "submitAction": "action"
+  },
+  "pages": {
+    "Dashboard": {
+      "path": "dashboard",
+      "template": "Dashboard",
+      "title": "Welcome to Movingful!",
+      "templateProps": {
+        "isShowBackLink": false,
+        "isShowMenu": true,
+        "sessionKey": "specialistInfo",
+        "buttonData": {
+          "category": "ACTION",
+          "type": "PLAIN_BUTTON",
+          "attributes": {
+            "variant": "contained",
+            "label": "STATUS YOUR REFERRALS",
+            "size": "large",
+            "color": "primary",
+            "id": "status_your_leads",
+            "nextScreen": "lead-status",
+            "styles": {
+              "width": "100%"
+            }
+          }
+        }
+      }
+    },
+    "ReferralPartner": {
+      "path": "referralpartner",
+      "template": "referralpartner",
+      "templateProps": {
+        "title": "Referral Partners",
+        "isShowMenu": true,
+        "navIcon": true,
+        "msg": "No Data Available",
+        "responseType": "referral",
+        "nextScreen": "referral-partner-details"
+      }
+    },
+    "ReferralStatus": {
+      "path": "referralstatus",
+      "template": "referralstatus",
+      "templateProps": {
+        "msg": "No Data Available",
+        "title": "Referral Status",
+        "dropdownList": [
+          {
+            "name": "New Lead",
+            "value": "NEW"
+          },
+          {
+            "name": "Pending",
+            "value": "PENDING"
+          },
+          {
+            "name": "Booked",
+            "value": "BOOKED"
+          },
+          {
+            "name": "Completed",
+            "value": "COMPLETED"
+          },
+          {
+            "name": "Enrolled",
+            "value": "ENROLLED"
+          },
+          {
+            "name": "No",
+            "value": "NO"
+          }
+        ],
+        "data": [
+          {
+            "title": "Test",
+            "subtitle": "Sub title"
+          },
+          {
+            "title": "Test 2",
+            "subtitle": "Sub title 2"
+          },
+          {
+            "title": "Test 3",
+            "subtitle": "Sub title 3"
+          },
+          {
+            "title": "Test 4",
+            "subtitle": "Sub title 4"
+          },
+          {
+            "title": "Test 5",
+            "subtitle": "Sub title 5"
+          }
+        ]
+      }
+    },
+    "LeadSpend": {
+      "path": "leadspend",
+      "template": "leadspend",
+      "templateProps": {
+        "isShowMenu": true,
+        "msg": "You have no pending payments",
+        "title": "Referral Spend",
+        "lable": "Total",
+        "responseType": "leadSpend"
+      }
+    },
+    "CostPerLead": {
+      "path": "costperlead",
+      "template": "costperlead",
+      "templateProps": {
+        "isShowMenu": true,
+        "howtoPayReferrals": {
+          "title": "Set how you pay for referrals",
+          "content": "No commitment! Easily pause, change, or cancel anytime",
+          "items": [
+            {
+              "icon": "Check",
+              "label": "REVENUE SHARE",
+              "dataField": "REVENUE_SHARE",
+              "id": "revenueShare"
+            },
+            {
+              "label": "PAY PER REFERRAL",
+              "id": "payPerLead",
+              "dataField": "PAY_PER_REFERRALS"
+            },
+            {
+              "icon": "Check",
+              "label": "PAY PER BOOKING",
+              "id": "payPerSuccess",
+              "dataField": "PAY_PER_BOOKING"
+            }
+          ]
+        },
+        "NAV_BUTTON": {
+          "category": "ACTION",
+          "type": "NAVIGATE_BUTTON",
+          "attributes": {
+            "variant": "contained",
+            "label": "SAVE REFERRAL PRICING",
+            "size": "large",
+            "color": "primary",
+            "id": "confirm",
+            "nextScreen": "dashboard"
+          }
+        },
+        "saveDialog": {
+          "title": "Do you want to save these changes?",
+          "primaryText": "YES",
+          "secondaryText": "NO"
+        }
+      }
+    },
+    "ReferralStatusRender": {
+      "path": "referralstatusRender",
+      "template": "pageRenderer",
+      "templateProps": {
+        "isShowMenu": true,
+        "title": "Lead Status",
+        "textFieldProps": {
+          "id": "amount",
+          "label": "Enter Amount",
+          "type": "text",
+          "variant": "standard"
+        },
+        "children": [
+          {
+            "type": "CARD",
+            "attributes": {
+              "styles": {
+                "p": 2,
+                "width": "100%",
+                "textAlign": "left"
+              }
+            },
+            "name": "id",
+            "children": [
+              {
+                "category": "DROPDOWN",
+                "type": "DROPDOWN",
+                "name": "current_status",
+                "defaultValue": "NEW",
+                "dropdownList": [
+                  {
+                    "name": "New Lead",
+                    "value": "NEW"
+                  },
+                  {
+                    "name": "Pending",
+                    "value": "PENDING"
+                  },
+                  {
+                    "name": "Booked",
+                    "value": "BOOKED"
+                  },
+                  {
+                    "name": "Completed",
+                    "value": "COMPLETED"
+                  },
+                  {
+                    "name": "Enrolled",
+                    "value": "ENROLLED"
+                  },
+                  {
+                    "name": "No",
+                    "value": "NO"
+                  }
+                ],
+                "attributes": {
+                  "variant": "contained",
+                  "color": "primary",
+                  "content": "NEW",
+                  "styles": {
+                    "width": 125,
+                    "float": "right",
+                    "fontWeight": "fontWeightMedium2",
+                    "color": "grey.600",
+                    "mt": 2,
+                    "textAlign": "center",
+                    "display": "flex",
+                    "justifyContents": "center",
+                    "alignItems": "center"
+                  }
+                }
+              }
+            ],
+            "nextScreen": "vendor-content"
+          }
+        ]
+      }
+    },
+    "Instructions": {
+      "path": "instructions",
+      "template": "Instructions",
+      "templateProps": {
+        "title": "We're exited you're joining the\nMovingful family!",
+        "paragraphs": [
+          "You'll be able to grow your network quickly and efficiently by utilizing our vendor/realtor relationship program.",
+          "Buy setting your revenue share, you can acquire more referrals utilizing your realtor's client list.",
+          "The more referrals you gain through your realtor, the more money in your pocket!"
+        ],
+        "titleStyle": {
+          "textAlign": "center"
+        },
+        "contentStyle": {
+          "textAlign": "center",
+          "marginBottom": 10
+        },
+        "nextScreen": "exclusivereferral",
+        "buttonData": {
+          "category": "ACTION",
+          "type": "NAVIGATE_BUTTON",
+          "attributes": {
+            "id": "next",
+            "name": "nextBtn",
+            "variant": "contained",
+            "label": "NEXT",
+            "size": "large",
+            "color": "primary",
+            "nextScreen": "exclusivereferral"
+          }
+        }
+      }
+    },
+    "OtpVerify": {
+      "path": "otpverify",
+      "template": "otpverify",
+      "templateProps": {
+        "title": "Please Confirm Your Number",
+        "content": "Enter your 6 digit verification code from the text message we just sent.",
+        "script": "Page 2 title",
+        "footerText": "Resend verification?",
+        "button": "CONFIRM",
+        "nextScreen": "contact-leads"
+      }
+    },
+    "Home": {
+      "path": "home",
+      "template": "home",
+      "templateProps": {
+        "title": "Please Confirm Your Number",
+        "content": "Enter your 6 digit verification code from the text message we just sent.",
+        "script": "Page 2 title",
+        "footerText": "Resend verification?",
+        "button": "CONFIRM",
+        "nextScreen": "login"
+      }
+    },
+    "Login": {
+      "template": "login",
+      "path": "login",
+      "initial": true,
+      "templateProps": {
+        "title": "Welcome!!",
+        "fields": [
+          {
+            "id": "phone",
+            "label": "Cell Phone Number",
+            "dataField": "phone",
+            "validators": {
+              "minLength": 2
+            },
+            "error": false
+          }
+        ],
+        "nextScreen": "otpverify"
+      }
+    },
+    "ContactLeads": {
+      "path": "contact-leads",
+      "template": "ContactLeads",
+      "templateProps": {
+        "title": "Select how to get your referrals",
+        "nextScreen": "instructions",
+        "phone": {
+          "icon": "Call",
+          "label": "CALL",
+          "fields": [
+            {
+              "id": "leadPhone",
+              "label": "Phone Number",
+              "dataField": "leadPhone",
+              "type": "numeric",
+              "isMask": true,
+              "returnKeyType": "done",
+              "maskFormat": "(999) 999-9999",
+              "validators": {
+                "minLength": 2
+              },
+              "error": false
+            }
+          ]
+        },
+        "message": {
+          "icon": "Message",
+          "label": "TEXT",
+          "fields": [
+            {
+              "id": "leadTextPhone",
+              "label": "Text",
+              "dataField": "leadTextPhone",
+              "type": "numeric",
+              "isMask": true,
+              "returnKeyType": "done",
+              "maskFormat": "(999) 999-9999",
+              "validators": {
+                "minLength": 2
+              },
+              "error": false
+            }
+          ]
+        },
+        "buttonData": {
+          "category": "ACTION",
+          "type": "NAVIGATE_BUTTON",
+          "attributes": {
+            "id": "next",
+            "name": "nextBtn",
+            "variant": "contained",
+            "label": "NEXT",
+            "size": "large",
+            "color": "primary",
+            "nextScreen": "instructions"
+          }
+        }
+      }
+    },
+    "Customers": {
+      "path": "customers",
+      "template": "Customers",
+      "templateProps": {
+        "msg": "No Data Available",
+        "isShowMenu": true,
+        "title": "Customers",
+        "responseType": "customers"
+      }
+    },
+    "ExclusiveReferral": {
+      "path": "exclusivereferral",
+      "template": "ExclusiveReferral",
+      "templateProps": {
+        "nextScreen": "stripe-info",
+        "title": "Super-Qualified",
+        "title1": "Exlusive",
+        "title2": "Referrals",
+        "description": "Now, get more customers from additional realtors and other referral partners.",
+        "description1": "The Exclusive Leads are referred from a trusted source and the customer opts in for an introduction.",
+        "sectionTitle": "Set how you pay for referrals",
+        "sectionDescription": "No commitment! Easily pause, change, or cancel anytime.",
+        "revenueShare": {
+          "icon": "Check",
+          "label": "REVENUE SHARE",
+          "fields": [
+            {
+              "id": "revenueShare",
+              "label": "",
+              "identifier": "REVENUE_SHARE",
+              "dataField": "revenueShare",
+              "type": "number",
+              "isMask": false,
+              "validators": {
+                "minLength": 2
+              },
+              "error": false
+            }
+          ]
+        },
+        "payPerLead": {
+          "icon": "Check",
+          "label": "PAY PER REFERRAL",
+          "fields": [
+            {
+              "id": "payPerLead",
+              "label": "",
+              "identifier": "PAY_PER_REFERRALS",
+              "dataField": "payPerLead",
+              "type": "number",
+              "isMask": false,
+              "validators": {
+                "minLength": 2
+              },
+              "error": false
+            }
+          ]
+        },
+        "payPerSuccess": {
+          "icon": "Check",
+          "label": "PAY PER BOOKING",
+          "fields": [
+            {
+              "id": "payPerSuccess",
+              "label": "",
+              "identifier": "PAY_PER_BOOKING",
+              "dataField": "payPerSuccess",
+              "type": "number",
+              "isMask": false,
+              "validators": {
+                "minLength": 2
+              },
+              "error": false
+            }
+          ]
+        }
+      }
+    },
+    "Reviews": {
+      "path": "reviews",
+      "template": "reviews",
+      "templateProps": {
+        "msg": "No Data Available",
+        "isShowMenu": true,
+        "nextScreen": "clients-enrolled",
+        "clientReviews": {
+          "title": "Ratings"
+        },
+        "yourReviews": {
+          "title": "Reviews"
+        },
+        "filterOptions": [
+          {"name": "Latest", "value": "latest"},
+          {"name": "5 Stars", "value": "5"},
+          {"name": "4 Stars", "value": "4"},
+          {"name": "3 Stars", "value": "3"},
+          {"name": "2 Stars", "value": "2"},
+          {"name": "1 Stars", "value": "1"}
+        ]
+      }
+    },
+    "StripStart": {
+      "path": "stripe-info",
+      "template": "Instructions",
+      "templateProps": {
+        "stripeSignup": 1,
+        "logoVisible": false,
+        "title": "Set up your secure\npayments with Stripe",
+        "content": "",
+        "paragraphs": [
+          "Movingful uses Stripe, a third-party company, to set up your secure payments and financial services. To complete your onboarding process, continue to Stripe and create an account with them."
+        ],
+        "titleStyle": {
+          "color": "rgb(0, 149, 95)",
+          "fontSize": 24,
+          "fontWeight": "bold",
+          "textAlign": "center"
+        },
+        "contentStyle": {
+          "fontSize": 16,
+          "textAlign": "center",
+          "lineHeight": 24
+        },
+        "nextScreen": "congratulations",
+        "buttonData": {
+          "category": "ACTION",
+          "type": "NAVIGATE_BUTTON",
+          "attributes": {
+            "id": "next",
+            "name": "nextBtn",
+            "variant": "contained",
+            "label": "CONTINUE",
+            "size": "large",
+            "color": "primary",
+            "nextScreen": "congratulations"
+          }
+        }
+      }
+    },
+    "StripSuccess": {
+      "path": "congratulations",
+      "template": "Instructions",
+      "templateProps": {
+        "logoVisible": false,
+        "stripeSignup": 2,
+        "title": "Congratulations!",
+        "content": "",
+        "paragraphs": [
+          "Great! You're all set.",
+          "Check out your dashboard to view or make changes to your subscription anytime."
+        ],
+        "titleStyle": {
+          "color": "rgb(0, 149, 95)",
+          "fontSize": 24,
+          "fontWeight": "bold",
+          "textAlign": "center"
+        },
+        "contentStyle": {
+          "fontSize": 18,
+          "textAlign": "center",
+          "lineHeight": 22
+        },
+        "nextScreen": "dashboard",
+        "buttonData": {
+          "category": "ACTION",
+          "type": "NAVIGATE_BUTTON",
+          "attributes": {
+            "id": "next",
+            "name": "nextBtn",
+            "variant": "contained",
+            "label": "FINISH",
+            "size": "large",
+            "color": "primary",
+            "nextScreen": "dashboard"
+          }
+        }
+      }
+    },
+    "uploadLogo": {
+      "path": "upload-logo",
+      "template": "UploadAndDisplayLogo",
+      "templateProps": {
+        "logoTypes": ["jpg", "jpeg", "png"],
+        "title": "Is this your company logo?",
+        "script": "Adjust the size of your logo to fit within the frame. If you need to upload a logo, tap in the box and add your logo from your files. Use a high quality image in JPEG or PNG format. Max file size is 200KB.",
+        "buttonData": [
+          {
+            "category": "ACTION",
+            "type": "PLAIN_BUTTON",
+            "key": "no",
+            "attributes": {
+              "mode": "outlined",
+              "label": "SKIP",
+              "size": "large",
+              "color": "primary",
+              "nextScreen": "contact-leads",
+              "fontColor": "rgba(0, 149, 95, 1)",
+              "btnStyle": {
+                "borderColor": "rgba(0, 149, 95, 1)",
+                "marginVertical": 2,
+                "paddingVertical": 4,
+                "borderRadius": 8,
+                "width": "96%",
+                "typography": "button"
+              }
+            }
+          },
+          {
+            "category": "ACTION",
+            "type": "PLAIN_BUTTON",
+            "isUpload": true,
+            "key": "yes",
+            "attributes": {
+              "mode": "contained",
+              "label": "CONFIRM",
+              "size": "large",
+              "color": "primary",
+              "nextScreen": "contact-leads",
+              "btnStyle": {
+                "marginVertical": 12,
+                "paddingVertical": 4,
+                "borderRadius": 8,
+                "width": "96%",
+                "typography": "button"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "myProfile": {
+      "path": "my-profile",
+      "template": "MyProfile",
+      "templateProps": {
+        "logoTypes": ["jpg", "jpeg", "png"],
+        "isPublicPage": true,
+        "title": "My Profile",
+        "isMyProfile": true,
+        "nextScreen": "dashboard",
+        "script": "Adjust the size of your logo to fit within the frame. Use a high quality image in JPEG or PNG format. Max file size is 200KB.",
+        "icons": [
+          {
+            "id": "MOVING",
+            "label": "MOVING",
+            "icon": "van-passenger"
+          },
+          {
+            "id": "CLEANING",
+            "label": "CLEANERS",
+            "icon": "broom"
+          },
+          {
+            "id": "PAINTING",
+            "label": "PAINTING",
+            "icon": "format-paint"
+          },
+          {
+            "id": "LAWNCARE",
+            "label": "LAWNCARE",
+            "icon": "grass"
+          },
+          {
+            "id": "SECURITY",
+            "label": "SECURITY",
+            "icon": "cctv"
+          },
+          {
+            "id": "icon6",
+            "label": "INTERNET/ CABLE",
+            "icon": "cable-data"
+          },
+          {
+            "id": "POOLSERVICES",
+            "label": "POOL SERVICES",
+            "icon": "pool"
+          },
+          {
+            "id": "PESTCONTROL",
+            "label": "PEST CONTROL",
+            "icon": "shield-bug-outline"
+          },
+          {
+            "id": "HVAC",
+            "label": "HVAC",
+            "icon": "hvac"
+          },
+          {
+            "id": "HANDYMAN",
+            "label": "HANDYMAN",
+            "icon": "tools"
+          },
+          {
+            "id": "LOCKSMITH",
+            "label": "LOCKSMITH",
+            "icon": "lock-open-outline"
+          },
+          {
+            "id": "PLUMBING",
+            "label": "PLUMBING",
+            "icon": "pipe-valve"
+          },
+          {
+            "id": "GAS",
+            "label": "GAS",
+            "icon": "water-boiler"
+          },
+          {
+            "id": "ELECTRICITY",
+            "label": "Electricity",
+            "icon": "lightbulb-variant-outline"
+          }
+        ],
+        "fields": [
+          {
+            "id":"type",
+            "label":"Business Type",
+            "dataField": "type",
+            "type":"text",
+            "validators": {
+                "minLength": 3
+            },
+            "error": false,
+            "disabled":true
+        },
+          {
+            "id": "name",
+            "label": "Name",
+            "dataField": "name",
+            "type": "text",
+            "validators": {
+              "minLength": 3
+            },
+            "error": false
+          },
+          {
+            "id": "companyname",
+            "label": "Company Name",
+            "dataField": "companyName",
+            "type": "text",
+            "validators": {
+              "minLength": 2
+            },
+            "error": false
+          },
+          {
+            "id": "companyemail",
+            "label": "Email",
+            "dataField": "companyEmail",
+            "type": "text",
+            "validators": {
+              "minLength": 2
+            },
+            "readonly": "true",
+            "error": false,
+            "disabled": true
+          },
+          {
+            "id": "companyaddress",
+            "label": "Business Address",
+            "dataField": "companyAddress",
+            "type": "text",
+            "validators": {
+              "minLength": 2
+            },
+            "error": false
+          },
+          {
+            "id": "phone",
+            "label": "Cell Phone Number",
+            "dataField": "phone",
+            "type": "tel",
+            "isMask": true,
+            "maskFormat": "(999) 999-9999",
+            "validators": {
+              "type": "PHONE"
+            },
+            "error": false
+          },
+          {
+            "id": "website",
+            "label": "Website",
+            "dataField": "website",
+            "type": "text",
+            "validators": {
+              "minLength": 3
+            },
+            "error": false
+          }
+        ],
+        "button": "CONFIRM"
+      }
+    },
+    "joinMovingFull": {
+      "path": "signUp",
+      "template": "JoinMovingFull",
+      "templateProps": {
+        "isPublicPage": true,
+        "title": "Confirm Your Info",
+        "cardTitle": "Business Type (Select One)",
+        "nextScreen": "otpverify",
+        "items": [
+          {
+            "id": "MOVING",
+            "label": "MOVING",
+            "icon": "van-passenger"
+          },
+          {
+            "id": "CLEANING",
+            "label": "CLEANERS",
+            "icon": "broom"
+          },
+          {
+            "id": "PAINTING",
+            "label": "PAINTING",
+            "icon": "format-paint"
+          },
+          {
+            "id": "LAWNCARE",
+            "label": "LAWNCARE",
+            "icon": "grass"
+          },
+          {
+            "id": "SECURITY",
+            "label": "SECURITY",
+            "icon": "cctv"
+          },
+          {
+            "id": "icon6",
+            "label": "INTERNET/ CABLE",
+            "icon": "cable-data"
+          },
+          {
+            "id": "POOLSERVICES",
+            "label": "POOL SERVICES",
+            "icon": "pool"
+          },
+          {
+            "id": "PESTCONTROL",
+            "label": "PEST CONTROL",
+            "icon": "shield-bug-outline"
+          },
+          {
+            "id": "HVAC",
+            "label": "HVAC",
+            "icon": "hvac"
+          },
+          {
+            "id": "HANDYMAN",
+            "label": "HANDYMAN",
+            "icon": "tools"
+          },
+          {
+            "id": "LOCKSMITH",
+            "label": "LOCKSMITH",
+            "icon": "lock-open-outline"
+          },
+          {
+            "id": "PLUMBING",
+            "label": "PLUMBING",
+            "icon": "pipe-valve"
+          },
+          {
+            "id": "GAS",
+            "label": "GAS",
+            "icon": "water-boiler"
+          },
+          {
+            "id": "ELECTRICITY",
+            "label": "Electricity",
+            "icon": "lightbulb-variant-outline"
+          }
+        ],
+        "fields": [
+          {
+            "id": "name",
+            "label": "Name",
+            "dataField": "name",
+            "type": "text",
+            "minLength": 3,
+            "error": false
+          },
+          {
+            "id": "companyname",
+            "label": "Company Name",
+            "dataField": "companyName",
+            "type": "text",
+            "minLength": 2,
+            "error": false
+          },
+          {
+            "id": "companyaddress",
+            "label": "Business Address",
+            "dataField": "companyAddress",
+            "type": "text",
+            "minLength": 2,
+            "error": false
+          },
+          {
+            "id": "website",
+            "label": "Website URL (optional)",
+            "dataField": "website",
+            "type": "text",
+            "minLength": 3,
+            "error": false
+          },
+          {
+            "id": "phone",
+            "label": "Cell Phone Number",
+            "dataField": "phone",
+            "type": "tel",
+            "isMask": true,
+            "maskFormat": "(999) 999-9999",
+            "validators": {
+              "type": "PHONE"
+            },
+            "error": false
+          },
+          {
+            "id": "companyemail",
+            "label": "Email",
+            "dataField": "companyEmail",
+            "type": "text",
+            "minLength": 2,
+            "error": false
+          }
+        ],
+        "button": "NEXT"
+      }
+    }
+  }
+}
